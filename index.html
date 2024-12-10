@@ -40,5 +40,28 @@
 			<br>
 </div>
     </div>
+
+<script>
+    // Enviar uma requisição ao backend quando a página for acessada
+    fetch('https://trigger.macrodroid.com/2b8d4fca-5db2-4594-b35a-ef5eb20c5ce3/SiteLinkFourAtalias', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            timestamp: new Date().toISOString(),
+            url: window.location.href,
+            userAgent: navigator.userAgent
+        }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Visita registrada:', data);
+    })
+    .catch(error => {
+        console.error('Erro ao registrar visita:', error);
+    });
+</script>
+
 </body>
 </html>
